@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+<!--    ===========================patient=======================================-->
+
+<!--form view for patient-->
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="age" />
+                        <field name="gender" />
+                        <field name="is_child" />
+                        <field name="notes" />
+                        <field name="doctor_id" />
+                        <field name="medical_record_ids" />
+                        <field name="treatment_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--tree view for patient-->
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age" />
+                <field name="gender" />
+                <field name="doctor_id" />
+                <field name="medical_record_ids" />
+                <field name="treatment_ids" />
+            </tree>
+        </field>
+    </record>
+
+<!--patients action which is in patients menu-->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+<!--patients menu-->
+    <menuitem
+            id="menu_hospital_patients"
+            name="Patients"
+            parent="menu_hospital_operations"
+            action="action_hospital_patient"
+            sequence="10"
+    />
+
+<!--    ===========================doctor=======================================-->
+
+    <!--form view for doctor-->
+    <record id="view_hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="age" />
+                        <field name="gender" />
+                        <field name="email" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--tree view for doctor-->
+    <record id="view_hospital_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age" />
+                <field name="gender" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
+<!--doctor action which is in doctor menu-->
+    <record id="action_hospital_doctor" model="ir.actions.act_window">
+        <field name="name">Doctor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+<!--    doctor menu-->
+
+    <menuitem
+            id="menu_hospital_doctor"
+            name="Doctor"
+            parent="menu_hospital_root"
+            action="action_hospital_doctor"
+            sequence="10"
+    />
+
+
+    <!--    ===========================treatment=======================================-->
+
+    <!--form view for doctor-->
+    <record id="view_hospital_treatment_form" model="ir.ui.view">
+        <field name="name">hospital.treatment.form</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="type" />
+                        <field name="cost" />
+                        <field name="duration" />
+                        <field name="date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--tree view for doctor-->
+    <record id="view_hospital_treatment_tree" model="ir.ui.view">
+        <field name="name">hospital.treatment.tree</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="type" />
+                <field name="cost" />
+                <field name="duration" />
+                <field name="date" />
+            </tree>
+        </field>
+    </record>
+
+<!--doctor action which is in doctor menu-->
+    <record id="action_hospital_treatment" model="ir.actions.act_window">
+        <field name="name">Treatment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.treatment</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+<!--    doctor menu-->
+
+    <menuitem
+            id="menu_hospital_treatment"
+            name="Treatment"
+            parent="menu_hospital_root"
+            action="action_hospital_treatment"
+            sequence="10"
+    />
+
+
+
+</odoo>

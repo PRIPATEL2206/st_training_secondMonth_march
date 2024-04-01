@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<record id="cafe_taxes_action" model="ir.actions.act_window">
+    <field name="name">Taxse</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">cafe.taxes</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem
+    id="cafe_taxes_menu"
+    name="Taxes"
+    action="cafe_taxes_action"
+    parent="cafe_root_menu"
+    sequence="10"/>
+</odoo>
+

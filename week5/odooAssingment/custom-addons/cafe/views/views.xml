@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+
+    <!-- ============================== Products ============================== -->
+
+    <record id="view_cafe_product_form" model="ir.ui.view">
+        <field name="name">cafe.product.form</field>
+        <field name="model">cafe.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="product_code" />
+                        <field name="product_image" />
+                        <field name="cost_price" />
+                        <field name="sale_price" />
+                        <field name="gpm" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cafe_product_tree" model="ir.ui.view">
+        <field name="name">cafe.product.tree</field>
+        <field name="model">cafe.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="product_code" />
+                <field name="product_image" />
+                <field name="cost_price" />
+                <field name="sale_price" />
+                <field name="gpm" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cafe_product_kanban" model="ir.ui.view">
+        <field name="name">cafe.product.kanban</field>
+        <field name="model">cafe.product</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_title">
+                                    <field name="name"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <field name="product_code"/>
+                                    <field name="cost_price"/>
+                                    <field name="sale_price"/>
+                                    <field name="gpm"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!-- ============================== tax ============================== -->
+
+    <record id="view_cafe_tax_form" model="ir.ui.view">
+        <field name="name">cafe.tax.form</field>
+        <field name="model">cafe.tax</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="tax_code" />
+                        <field name="percent" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cafe_tax_tree" model="ir.ui.view">
+        <field name="name">cafe.tax.tree</field>
+        <field name="model">cafe.tax</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="tax_code" />
+                <field name="percent" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cafe_tax_kanban" model="ir.ui.view">
+        <field name="name">cafe.tax.kanban</field>
+        <field name="model">cafe.tax</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_title">
+                                    <field name="name"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <field name="tax_code" />
+                                    <field name="percent" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!-- ============================== sale ============================== -->
+
+<!--    <record id="view_cafe_sale_order_form" model="ir.ui.view">-->
+<!--        <field name="name">cafe.sale.order.form</field>-->
+<!--        <field name="model">cafe.sale.order</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <header>-->
+<!--                    <button name="action_draft" string="Draft" type="object" states="canceled" class="oe_highlight"/>-->
+<!--                    <button name="action_confirm" string="Confirm" type="object" states="draft" class="oe_highlight"/>-->
+<!--                    <button name="action_done" string="Done" type="object" states="confirmed" class="oe_highlight"/>-->
+<!--                    <button name="action_cancel" string="Cancel" type="object" states="done,confirmed" class="oe_highlight"/>-->
+<!--                </header>-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <field name="state"/>-->
+<!--                        <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}" />-->
+<!--                        <field name="customer" attrs="{'readonly': [('state', '!=', 'draft')]}" />-->
+<!--                        <field name="order_lines" attrs="{'readonly': [('state', '!=', 'draft')]}"  />-->
+<!--                        <field name="tax_lines" attrs="{'readonly': [('state', '!=', 'draft')]}" />-->
+<!--                        <field name="untaxed_amount" attrs="{'readonly': [('state', '!=', 'draft')]}" />-->
+<!--                        <field name="tax_amount" attrs="{'readonly': [('state', '!=', 'draft')]}" />-->
+<!--                        <field name="total_amount" attrs="{'readonly': [('state', '!=', 'draft')]}" />-->
+<!--                    </group>-->
+
+<!--                </sheet>-->
+<!--            </form>-->
+<!--            <xpath expr="//field[@name='order_lines']/form//field[@name='taxes']" position="attributes">-->
+<!--                <attribute name="widget">many2many_tags</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="view_cafe_sale_order_tree" model="ir.ui.view">
+        <field name="name">cafe.sale.order.tree</field>
+        <field name="model">cafe.sale.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="state" />
+                <field name="date" />
+                <field name="customer" />
+                <field name="order_lines" />
+                <field name="tax_lines" />
+                <field name="untaxed_amount" />
+                <field name="tax_amount" />
+                <field name="total_amount" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cafe_sale_order_kanban" model="ir.ui.view">
+        <field name="name">cafe.sale.order.kanban</field>
+        <field name="model">cafe.sale.order</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_title">
+                                    <field name="state"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <field name="date" />
+                                    <field name="customer" />
+                                    <field name="order_lines" />
+                                    <field name="tax_lines" />
+                                    <field name="untaxed_amount" />
+                                    <field name="tax_amount" />
+                                    <field name="total_amount" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+          <!-- ============================== Order-lines ============================== -->
+
+        <record id="view_cafe_order_lines_form" model="ir.ui.view">
+        <field name="name">cafe.order.lines.form</field>
+        <field name="model">cafe.order.lines</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product" />
+                        <field name="quantity" />
+                        <field name="price" />
+                        <field name="subTotal" />
+                        <field name="taxes" widget="many2many_tags" />
+                        <field name="taxAmount" />
+                        <field name="total" />
+                        <field name="sale" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+            <!-- ============================== Tax-lines ============================== -->
+
+     <record id="view_cafe_tax_lines_tree" model="ir.ui.view">
+        <field name="name">cafe.order.tax.lines.tree</field>
+        <field name="model">cafe.order.tax</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name="tax"/>
+              <field name="base_price"/>
+              <field name="percentage"/>
+              <field name="taxAmount"/>
+            </tree>
+        </field>
+    </record>
+  </data>
+</odoo>

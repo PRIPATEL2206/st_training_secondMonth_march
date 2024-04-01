@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<record id="cafe_sales_action" model="ir.actions.act_window">
+    <field name="name">Sales</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">cafe.sales</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem
+    id="cafe_sales_menu"
+    name="Sales"
+    action="cafe_sales_action"
+    parent="cafe_root_menu"
+    sequence="10"/>
+
+<record id="view_cafe_sale_order_form" model="ir.ui.view">
+        <field name="name">cafe.sale.order.form</field>
+        <field name="model">cafe.sales</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="set_state_draft" string="Draft" type="object" states="canceled" class="oe_highlight"/>
+                    <button name="set_state_conform" string="Confirm" type="object" states="draft" class="oe_highlight"/>
+                    <button name="set_state_done" string="Done" type="object" states="confirmed" class="oe_highlight"/>
+                    <button name="set_state_cancel" string="Cancel" type="object" states="done,confirmed" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="state"/>
+                        <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="customer" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="orderLines_ids" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="taxLines_ids" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="untaxedAmount" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="taxAmount" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="totalAmount" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
